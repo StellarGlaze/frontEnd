@@ -3,7 +3,7 @@ import ContractPage from "./ContractPage";
 import StaticPage from "./StaticPage";
 import { useAccount } from "wagmi";
 import Footer from "../components/layout/Footer";
-
+import { Outlet } from "react-router";
 function LandingPage() {
   const { address } = useAccount();
 
@@ -11,9 +11,7 @@ function LandingPage() {
     <div className="relative flex flex-col min-h-screen bg-[#02040F]">
       {/* Content */}
       <Header />
-
-      {address ? <ContractPage /> : <StaticPage />}
-
+      <Outlet />
       {/* Other content goes here */}
       <Footer />
     </div>
