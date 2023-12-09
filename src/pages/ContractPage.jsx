@@ -1,6 +1,7 @@
 import { useAccount, useBalance } from "wagmi";
 import { useState } from "react";
 import CustomDialog from "../components/CustomDialog";
+import ContractStatus from "../components/ContractStatus";
 
 function ContractPage() {
   const { address } = useAccount();
@@ -55,6 +56,16 @@ function ContractPage() {
           >
             Learn More
           </button>
+        </div>
+
+        <div>
+          <ContractStatus
+            createdAt="9th Dec 2023"
+            status="Running"
+            purpose="Purpose"
+            numBenefactors="4"
+            sanctionedAmount="4000"
+          />
         </div>
 
         <CustomDialog open={isDialogOpen} handleClose={closeDialog} />
