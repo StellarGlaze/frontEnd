@@ -11,26 +11,9 @@ const Header = () => {
       </div>
 
       <div>
+        <a href="/transaction">Make Transaction</a>
         <ConnectButton />
       </div>
-      {/* Right side - Connect Wallet */}
-      {/* <div>
-        <button
-          className="text-white px-4 py-2 rounded"
-          style={{
-            color: "#D9D9D9",
-            fontFamily: "Inter",
-            fontSize: "1.2rem",
-            fontStyle: "normal",
-            fontWeight: 700,
-            lineHeight: "normal",
-            borderRadius: "6.25rem",
-            background: "rgba(229, 149, 0, 0.70)",
-          }}
-        >
-          Connect
-        </button>
-      </div> */}
     </header>
   );
 };

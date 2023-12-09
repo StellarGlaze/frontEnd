@@ -1,5 +1,5 @@
 import React from "react";
-import CustomInput from "./CustomInput";
+import CustomInput from "./layout/CustomInput";
 
 const ContractStatus = ({
   createdAt,
