@@ -13,40 +13,63 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-const CustomTextField = ({ label, name, value, onChange }) => {
+const CustomInput = ({
+  label,
+  name,
+  value,
+  onChange,
+  type = "text",
+  placeholder,
+}) => {
   return (
-    <FormControl fullWidth margin="normal">
-      <InputLabel>{label}</InputLabel>
-      <InputBase
+    <div className="mb-4">
+      <label className="block text-white text-sm font-bold mb-2">{label}</label>
+      <input
+        className="appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
+        type={type}
         name={name}
         value={value}
         onChange={onChange}
-        inputProps={{ style: { color: "#FFF" } }}
-        style={{ color: "#FFF" }}
+        placeholder={placeholder}
       />
-    </FormControl>
+    </div>
   );
 };
 
-const CustomSelect = ({ label, name, value, onChange, options }) => {
-  return (
-    <FormControl fullWidth margin="normal">
-      <InputLabel>{label}</InputLabel>
-      <Select
-        name={name}
-        value={value}
-        onChange={onChange}
-        style={{ color: "#FFF" }}
-      >
-        {options.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
-  );
-};
+// const CustomTextField = ({ label, name, value, onChange }) => {
+//   return (
+//     <FormControl fullWidth margin="normal">
+//       <InputLabel>{label}</InputLabel>
+//       <InputBase
+//         name={name}
+//         value={value}
+//         onChange={onChange}
+//         inputProps={{ style: { color: "#FFF" } }}
+//         style={{ color: "#FFF" }}
+//       />
+//     </FormControl>
+//   );
+// };
+
+// const CustomSelect = ({ label, name, value, onChange, options }) => {
+//   return (
+//     <FormControl fullWidth margin="normal">
+//       <InputLabel>{label}</InputLabel>
+//       <Select
+//         name={name}
+//         value={value}
+//         onChange={onChange}
+//         style={{ color: "#FFF" }}
+//       >
+//         {options.map((option) => (
+//           <MenuItem key={option.value} value={option.value}>
+//             {option.label}
+//           </MenuItem>
+//         ))}
+//       </Select>
+//     </FormControl>
+//   );
+// };
 
 const CustomDialog = ({ open, handleClose }) => {
   const [formValues, setFormValues] = useState({
@@ -115,23 +138,33 @@ const CustomDialog = ({ open, handleClose }) => {
           ></div>
           <div style={{ width: "60%" }}>
             <form>
-              <CustomTextField
+              {/* <TextField
+                label="Purpose"
+                name="purpose"
+                value={formValues.purpose}
+                onChange={handleInputChange}
+              /> */}
+              <CustomInput
                 label="Purpose"
                 name="purpose"
                 value={formValues.purpose}
                 onChange={handleInputChange}
               />
-              <CustomTextField
+
+              <TextField
                 label="Start Time"
                 name="startTime"
                 value={formValues.startTime}
                 onChange={handleInputChange}
               />
-              <CustomTextField
+              <TextField
                 label="End Time"
                 name="endTime"
                 value={formValues.endTime}
                 onChange={handleInputChange}
+                style={{
+                  borderColor: "white",
+                }}
               />
 
               <div style={{ marginTop: "1rem" }}>
@@ -146,13 +179,13 @@ const CustomDialog = ({ open, handleClose }) => {
 
               {formValues.recipients.map((recipient, index) => (
                 <div key={index} style={{ display: "flex", marginTop: "1rem" }}>
-                  <CustomTextField
+                  <TextField
                     label="Recipient Address"
                     name="address"
                     value={recipient.address}
                     onChange={(e) => handleInputChange(e, index)}
                   />
-                  <CustomSelect
+                  <Select
                     label="Level"
                     name="level"
                     value={recipient.level}
