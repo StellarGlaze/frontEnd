@@ -1,5 +1,5 @@
 // src/components/FaqPage.js
-import React from "react";
+
 import FaqItem from "../components/layout/FaqItem";
 import Header from "../components/layout/Header";
 const FaqPage = () => {
