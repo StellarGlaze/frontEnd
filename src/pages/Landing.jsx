@@ -2,6 +2,7 @@ import Header from "../components/layout/Header";
 import StaticPage from "./StaticPage";
 import { useAccount } from "wagmi";
 import stars from "../assets/stars.png";
+import Footer from "../components/layout/Footer";
 
 function LandingPage() {
   const { address } = useAccount();
@@ -18,8 +19,7 @@ function LandingPage() {
       {/* Content */}
       <Header />
       {address ? <></> : <StaticPage />}
-
-      {/* Other content goes here */}
+      <Footer />
     </div>
   );
 }
