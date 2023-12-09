@@ -4,6 +4,7 @@ import CustomDialog from "../components/CustomDialog";
 
 function ContractPage() {
   const { address } = useAccount();
+
   const { data } = useBalance({
     address: address,
   });
