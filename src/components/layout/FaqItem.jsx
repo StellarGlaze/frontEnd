@@ -10,7 +10,7 @@ const FaqItem = ({ question, answer }) => {
   return (
     <div className="mb-4">
       <div className="cursor-pointer" onClick={toggleDropdown}>
-        <div className="flex items-center justify-between bg-blue-200 p-3 rounded transition duration-3000 ease-in-out">
+        <div className="flex items-center justify-between bg-[#0a151d] p-3 rounded transition duration-3000 ease-in-out">
           <div className="text-left">{question}</div>
           <div
             className={`transform ${
@@ -21,11 +21,13 @@ const FaqItem = ({ question, answer }) => {
           </div>
         </div>
       </div>
-      {isOpen && (
-        <div className="bg-gray-100 p-3 rounded mt-2 transition duration-500 ease-in-out">
-          {answer}
-        </div>
-      )}
+      <div
+        className={`overflow-hidden transition-max-height duration-500 ease-in-out ${
+          isOpen ? "max-h-[200px]" : "max-h-0"
+        }`}
+      >
+        <div className="bg-[#132736] p-3 rounded mt-2">{answer}</div>
+      </div>
     </div>
   );
 };

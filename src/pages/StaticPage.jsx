@@ -67,7 +67,7 @@ const StaticPage = () => {
         </div>
       </div>
 
-      <div className="  ml-auto mr-auto mt-[150px] mb-[150px] max-w-2xl flex-grow z-10">
+      <div className="  ml-auto mr-auto mt-[150px] mb-[250px] max-w-2xl flex-grow z-10">
         {/* Feature Components */}
         <FeatureComponent
           icon={

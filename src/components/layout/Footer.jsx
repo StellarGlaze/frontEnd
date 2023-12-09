@@ -9,7 +9,12 @@ const invertedXIconStyle = {
 
 const Footer = () => {
   return (
-    <footer className="bg-002642 p-8 text-white">
+    <footer
+      className="bg-[#04071b] p-8 text-white absolute bottom-0 w-full"
+      style={{
+        boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+      }}
+    >
       <div className="flex justify-between items-center">
         {/* Left side */}
         <div>
