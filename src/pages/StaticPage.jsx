@@ -12,6 +12,7 @@ const StyledVideoPlayer = styled(ReactPlayer)`
   position: absolute;
   right: 0;
   bottom: 0;
+  margin-top: 1000rem;
 `;
 
 const FeatureComponent = ({ icon, heading, content }) => {
@@ -31,19 +32,19 @@ const FeatureComponent = ({ icon, heading, content }) => {
 const StaticPage = () => {
   return (
     <>
-      <div className="flex-grow flex justify-center z-10">
-        <div className=" w-5/6 min-h-[650px] h-4/5 top-16 p-8 relative">
-          <div className="max-w-2xl left-content text-left mb-8">
+      <div className="z-10">
+        <div className="grid w-5/6 top-16 p-8 relative">
+          <div className="col-span-8 left-content text-left ml-5 mb-8">
             {/* AllowFlow Heading */}
-            <h2 className="text-white font-bold text-6xl mt-8">AllowFlow</h2>
+            <h2 className="text-white font-bold text-7xl mt-8">AllowFlow</h2>
             {/* AllowFlow Description */}
-            <p className="text-white text-lg font-light mt-4">
+            <p className="text-white w-[30rem] text-xl font-light mt-4">
               Empower seamless token management with AllowFlow, where permission
               meets flexibility in the DeFi space.
             </p>
 
             {/* Buttons */}
-            <div className="flex justify-center mt-8">
+            <div className="flex mt-8">
               <button className="bg-[#E59500] text-white px-6 py-3 rounded-full mr-4">
                 Join the Newsletter
               </button>
@@ -54,13 +55,15 @@ const StaticPage = () => {
           </div>
 
           {/* Video Player */}
-          <StyledVideoPlayer
-            url={video}
-            width="40%"
-            height="auto"
-            controls={false}
-            playing
-          />
+          <div className="col-span-4 mt-[15rem]">
+            <StyledVideoPlayer
+              url={video}
+              width="50%"
+              height="auto"
+              controls={false}
+              playing
+            />
+          </div>
         </div>
       </div>
 
@@ -68,7 +71,11 @@ const StaticPage = () => {
         {/* Feature Components */}
         <FeatureComponent
           icon={
-            <img src={notif} alt="Notification Icon" className="w-auto h-24" />
+            <img
+              src={notif}
+              alt="Notification Icon"
+              className="w-[10rem] h-24"
+            />
           }
           heading="Event Driven Notifications"
           content="Stay informed with real-time notifications on token transactions and changes in permission settings, providing transparency and enhancing user awareness within the AllowFlow ecosystem."
@@ -79,7 +86,7 @@ const StaticPage = () => {
             <img
               src={dynthresh}
               alt="Dynamic Thresholds"
-              className="w-auto h-24"
+              className="w-[8rem] h-24"
             />
           }
           heading="Dynamic Thresholds"
@@ -91,7 +98,7 @@ const StaticPage = () => {
             <img
               src={time}
               alt="Time-Limited Permissions"
-              className="w-auto h-24"
+              className="w-[10rem] h-24"
             />
           }
           heading="Time-Limited Permissions"

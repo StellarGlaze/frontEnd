@@ -10,7 +10,7 @@ function LandingPage() {
     <div className="relative flex flex-col min-h-screen bg-[#02040F]">
       {/* Image Background */}
       <img
-        className="absolute top-0 left-0  w-3/4 h-[950px] object-cover"
+        className="absolute top-0 left-0  w-full h-[55rem] object-cover"
         src={stars}
         alt="Stars Background"
       />

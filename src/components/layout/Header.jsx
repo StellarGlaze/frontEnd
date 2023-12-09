@@ -7,7 +7,7 @@ const Header = () => {
     <header className="bg-blue-50 bg-opacity-0 p-10 flex items-center justify-between w-full z-50">
       {/* Left side - Logo */}
       <div>
-        <img src={logo} alt="Logo" className="w-auro h-6" />
+        <img src={logo} alt="Logo" className="w-auro h-5" />
       </div>
 
       <div>
