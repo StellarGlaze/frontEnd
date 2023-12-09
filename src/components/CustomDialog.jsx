@@ -11,8 +11,42 @@ import {
   FormControl,
   InputLabel,
 } from "@mui/material";
-
 import { useState } from "react";
+
+const CustomTextField = ({ label, name, value, onChange }) => {
+  return (
+    <FormControl fullWidth margin="normal">
+      <InputLabel>{label}</InputLabel>
+      <InputBase
+        name={name}
+        value={value}
+        onChange={onChange}
+        inputProps={{ style: { color: "#FFF" } }}
+        style={{ color: "#FFF" }}
+      />
+    </FormControl>
+  );
+};
+
+const CustomSelect = ({ label, name, value, onChange, options }) => {
+  return (
+    <FormControl fullWidth margin="normal">
+      <InputLabel>{label}</InputLabel>
+      <Select
+        name={name}
+        value={value}
+        onChange={onChange}
+        style={{ color: "#FFF" }}
+      >
+        {options.map((option) => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.label}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  );
+};
 
 const CustomDialog = ({ open, handleClose }) => {
   const [formValues, setFormValues] = useState({
@@ -71,7 +105,7 @@ const CustomDialog = ({ open, handleClose }) => {
         Create Allowance
       </DialogTitle>
       <DialogContent style={{ backgroundColor: "#0C0E1A", padding: "2rem" }}>
-        <div style={{ display: "flex", height: "500px" }}>
+        <div style={{ display: "flex", minHeight: "500px" }}>
           <div
             style={{
               width: "30%",
@@ -81,60 +115,24 @@ const CustomDialog = ({ open, handleClose }) => {
           ></div>
           <div style={{ width: "60%" }}>
             <form>
-              <TextField
-                fullWidth
+              <CustomTextField
                 label="Purpose"
                 name="purpose"
                 value={formValues.purpose}
                 onChange={handleInputChange}
-                margin="normal"
               />
-              <TextField
-                fullWidth
+              <CustomTextField
                 label="Start Time"
                 name="startTime"
                 value={formValues.startTime}
                 onChange={handleInputChange}
-                margin="normal"
-                InputProps={{
-                  style: { color: "#FFF" },
-                }}
               />
-              <TextField
-                fullWidth
+              <CustomTextField
                 label="End Time"
                 name="endTime"
                 value={formValues.endTime}
                 onChange={handleInputChange}
-                margin="normal"
               />
-
-              {formValues.recipients.map((recipient, index) => (
-                <div key={index} style={{ display: "flex", marginTop: "1rem" }}>
-                  <TextField
-                    label="Recipient Address"
-                    name="address"
-                    value={recipient.address}
-                    onChange={(e) => handleInputChange(e, index)}
-                    margin="normal"
-                  />
-                  <FormControl fullWidth margin="normal">
-                    <InputLabel>Level</InputLabel>
-                    <Select
-                      name="level"
-                      value={recipient.level}
-                      onChange={(e) => handleInputChange(e, index)}
-                    >
-                      <MenuItem value="low">Low</MenuItem>
-                      <MenuItem value="medium">Medium</MenuItem>
-                      <MenuItem value="high">High</MenuItem>
-                    </Select>
-                  </FormControl>
-                  <IconButton onClick={() => removeRecipient(index)}>
-                    {/* <DeleteIcon /> */}
-                  </IconButton>
-                </div>
-              ))}
 
               <div style={{ marginTop: "1rem" }}>
                 <Button
@@ -145,6 +143,31 @@ const CustomDialog = ({ open, handleClose }) => {
                   Add Recipient
                 </Button>
               </div>
+
+              {formValues.recipients.map((recipient, index) => (
+                <div key={index} style={{ display: "flex", marginTop: "1rem" }}>
+                  <CustomTextField
+                    label="Recipient Address"
+                    name="address"
+                    value={recipient.address}
+                    onChange={(e) => handleInputChange(e, index)}
+                  />
+                  <CustomSelect
+                    label="Level"
+                    name="level"
+                    value={recipient.level}
+                    onChange={(e) => handleInputChange(e, index)}
+                    options={[
+                      { label: "Low", value: "low" },
+                      { label: "Medium", value: "medium" },
+                      { label: "High", value: "high" },
+                    ]}
+                  />
+                  <IconButton onClick={() => removeRecipient(index)}>
+                    {/* <DeleteIcon /> */}
+                  </IconButton>
+                </div>
+              ))}
             </form>
           </div>
         </div>
