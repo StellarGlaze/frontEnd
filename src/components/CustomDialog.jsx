@@ -113,16 +113,19 @@ const CustomDialog = ({ open, handleClose }) => {
       >
         Create Allowance
       </DialogTitle>
-      <DialogContent style={{ backgroundColor: "#0C0E1A", padding: "2rem" }}>
-        <div style={{ display: "flex", minHeight: "500px" }}>
+      <DialogContent
+        style={{ backgroundColor: "#0C0E1A", padding: "2rem", height: "600px" }}
+      >
+        <div style={{ display: "flex", height: "500px" }}>
           <div
             style={{
               width: "30%",
               border: "1px dashed rgba(255, 255, 255, 0.20)",
               marginRight: "5%",
+              maxHeight: "500px",
             }}
           ></div>
-          <div style={{ width: "60%" }}>
+          <div style={{ width: "60%", overflowY: "auto" }}>
             <form>
               <CustomInput
                 label="Purpose"
