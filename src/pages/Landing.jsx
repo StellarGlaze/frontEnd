@@ -1,7 +1,7 @@
 import Header from "../components/layout/Header";
+import ContractPage from "./ContractPage";
 import StaticPage from "./StaticPage";
 import { useAccount } from "wagmi";
-import stars from "../assets/stars.png";
 import Footer from "../components/layout/Footer";
 
 function LandingPage() {
@@ -9,16 +9,12 @@ function LandingPage() {
 
   return (
     <div className="relative flex flex-col min-h-screen bg-[#02040F]">
-      {/* Image Background */}
-      <img
-        className="absolute top-0 left-0  w-full h-[55rem] object-cover"
-        src={stars}
-        alt="Stars Background"
-      />
-
       {/* Content */}
       <Header />
-      {address ? <></> : <StaticPage />}
+
+      {address ? <ContractPage /> : <StaticPage />}
+
+      {/* Other content goes here */}
       <Footer />
     </div>
   );

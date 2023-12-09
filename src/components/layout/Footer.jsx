@@ -1,4 +1,3 @@
-import React from "react";
 import discordIcon from "../../assets/discordIcon.png";
 import xIcon from "../../assets/xIcon.png";
 import telegramIcon from "../../assets/telegramIcon.png";

@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import FaqItem from "../components/layout/FaqItem";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";

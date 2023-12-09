@@ -4,6 +4,7 @@ import video from "../../src/assets/vid.mp4";
 import dynthresh from "../assets/dynthresh.png";
 import notif from "../assets/notif.png";
 import time from "../assets/time.png";
+import stars from "../assets/stars.png";
 
 // Styled Video Player
 const StyledVideoPlayer = styled(ReactPlayer)`
@@ -17,21 +18,28 @@ const StyledVideoPlayer = styled(ReactPlayer)`
 
 const FeatureComponent = ({ icon, heading, content }) => {
   return (
-    <div className="flex justify-center items-center mt-16">
-      <div className="flex items-center">
-        <div className="mr-8">{icon}</div>
-        <div>
-          <h3 className="text-white font-bold text-2xl mb-4">{heading}</h3>
-          <p className="text-white">{content}</p>
+    <>
+      <div className="flex justify-center items-center mt-16">
+        <div className="flex items-center">
+          <div className="mr-8">{icon}</div>
+          <div>
+            <h3 className="text-white font-bold text-2xl mb-4">{heading}</h3>
+            <p className="text-white">{content}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
 const StaticPage = () => {
   return (
     <>
+      <img
+        className="absolute top-0 left-0  w-full h-[55rem] object-cover z-1"
+        src={stars}
+        alt="Stars Background"
+      />
       <div className="z-10">
         <div className="grid w-5/6 top-16 p-8 relative">
           <div className="col-span-8 left-content text-left ml-5 mb-8">
