@@ -3,15 +3,9 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import {
-  TextField,
-  IconButton,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel,
-} from "@mui/material";
+import { IconButton } from "@mui/material";
 import { useState } from "react";
+import removeIcon from "../assets/remove.png";
 
 const CustomInput = ({
   label,
@@ -20,56 +14,48 @@ const CustomInput = ({
   onChange,
   type = "text",
   placeholder,
+  options,
 }) => {
   return (
     <div className="mb-4">
-      <label className="block text-white text-sm font-bold mb-2">{label}</label>
-      <input
-        className="appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
-        type={type}
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-      />
+      <label className="block ml-3 text-white text-sm font-bold mb-2">
+        {label}
+      </label>
+      {type === "select" ? (
+        <select
+          className="appearance-none border ml-3 rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+          name={name}
+          value={value}
+          onChange={onChange}
+        >
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      ) : type === "datetime" ? (
+        <input
+          className="appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+          type="datetime-local"
+          name={name}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+        />
+      ) : (
+        <input
+          className="appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+          type={type}
+          name={name}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+        />
+      )}
     </div>
   );
 };
-
-// const CustomTextField = ({ label, name, value, onChange }) => {
-//   return (
-//     <FormControl fullWidth margin="normal">
-//       <InputLabel>{label}</InputLabel>
-//       <InputBase
-//         name={name}
-//         value={value}
-//         onChange={onChange}
-//         inputProps={{ style: { color: "#FFF" } }}
-//         style={{ color: "#FFF" }}
-//       />
-//     </FormControl>
-//   );
-// };
-
-// const CustomSelect = ({ label, name, value, onChange, options }) => {
-//   return (
-//     <FormControl fullWidth margin="normal">
-//       <InputLabel>{label}</InputLabel>
-//       <Select
-//         name={name}
-//         value={value}
-//         onChange={onChange}
-//         style={{ color: "#FFF" }}
-//       >
-//         {options.map((option) => (
-//           <MenuItem key={option.value} value={option.value}>
-//             {option.label}
-//           </MenuItem>
-//         ))}
-//       </Select>
-//     </FormControl>
-//   );
-// };
 
 const CustomDialog = ({ open, handleClose }) => {
   const [formValues, setFormValues] = useState({
@@ -138,12 +124,6 @@ const CustomDialog = ({ open, handleClose }) => {
           ></div>
           <div style={{ width: "60%" }}>
             <form>
-              {/* <TextField
-                label="Purpose"
-                name="purpose"
-                value={formValues.purpose}
-                onChange={handleInputChange}
-              /> */}
               <CustomInput
                 label="Purpose"
                 name="purpose"
@@ -151,20 +131,19 @@ const CustomDialog = ({ open, handleClose }) => {
                 onChange={handleInputChange}
               />
 
-              <TextField
+              <CustomInput
                 label="Start Time"
                 name="startTime"
                 value={formValues.startTime}
                 onChange={handleInputChange}
+                type="datetime"
               />
-              <TextField
+              <CustomInput
                 label="End Time"
                 name="endTime"
                 value={formValues.endTime}
                 onChange={handleInputChange}
-                style={{
-                  borderColor: "white",
-                }}
+                type="datetime"
               />
 
               <div style={{ marginTop: "1rem" }}>
@@ -179,17 +158,18 @@ const CustomDialog = ({ open, handleClose }) => {
 
               {formValues.recipients.map((recipient, index) => (
                 <div key={index} style={{ display: "flex", marginTop: "1rem" }}>
-                  <TextField
+                  <CustomInput
                     label="Recipient Address"
                     name="address"
                     value={recipient.address}
                     onChange={(e) => handleInputChange(e, index)}
                   />
-                  <Select
+                  <CustomInput
                     label="Level"
                     name="level"
                     value={recipient.level}
                     onChange={(e) => handleInputChange(e, index)}
+                    type="select"
                     options={[
                       { label: "Low", value: "low" },
                       { label: "Medium", value: "medium" },
@@ -197,7 +177,11 @@ const CustomDialog = ({ open, handleClose }) => {
                     ]}
                   />
                   <IconButton onClick={() => removeRecipient(index)}>
-                    {/* <DeleteIcon /> */}
+                    <img
+                      src={removeIcon}
+                      alt="remove"
+                      className=" w-16 m-auto ml-4"
+                    />
                   </IconButton>
                 </div>
               ))}
