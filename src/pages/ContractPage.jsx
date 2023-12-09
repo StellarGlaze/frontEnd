@@ -1,10 +1,21 @@
 import { useAccount, useBalance } from "wagmi";
+import { useState } from "react";
+import CustomDialog from "../components/CustomDialog";
 
 function ContractPage() {
   const { address } = useAccount();
   const { data } = useBalance({
     address: address,
   });
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const openDialog = () => {
+    setIsDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+  };
 
   return (
     <>
@@ -34,6 +45,7 @@ function ContractPage() {
           <button
             type="button"
             className="inline-flex items-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 "
+            onClick={openDialog}
           >
             Add An Allowance
           </button>
@@ -44,6 +56,8 @@ function ContractPage() {
             Learn More
           </button>
         </div>
+
+        <CustomDialog open={isDialogOpen} handleClose={closeDialog} />
       </div>
     </>
   );
