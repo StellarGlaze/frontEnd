@@ -56,7 +56,7 @@ function ContractPage() {
           </button>
         </div>
 
-        <div>
+        {/* <div>
           <ContractStatus
             createdAt="9th Dec 2023"
             status="Running"
@@ -64,7 +64,7 @@ function ContractPage() {
             numBenefactors="4"
             sanctionedAmount="4000"
           />
-        </div>
+        </div> */}
 
         <CustomDialog open={isDialogOpen} handleClose={closeDialog} />
       </div>
