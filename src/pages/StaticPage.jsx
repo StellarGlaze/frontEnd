@@ -63,7 +63,7 @@ const StaticPage = () => {
           </div>
 
           {/* Video Player */}
-          <div className="col-span-4 mt-[15rem]">
+          {/* <div className="col-span-4 mt-[15rem]">
             <StyledVideoPlayer
               url={video}
               width="50%"
@@ -71,7 +71,7 @@ const StaticPage = () => {
               controls={false}
               playing
             />
-          </div>
+          </div> */}
         </div>
       </div>
 
