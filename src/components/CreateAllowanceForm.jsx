@@ -318,7 +318,7 @@ function CreateAllowanceForm({ handleClose }) {
         <div
           style={{
             width: "30%",
-            border: "1px dashed rgba(255, 255, 255, 0.20)",
+
             marginRight: "5%",
             maxHeight: "500px",
           }}
