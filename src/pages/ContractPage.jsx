@@ -1,13 +1,15 @@
-import { useAccount, useBalance } from "wagmi";
 import { useState } from "react";
 import CustomDialog from "../components/CustomDialog";
 import ContractStatus from "../components/ContractStatus";
 
 function ContractPage() {
-  const { address } = useAccount();
-  const { data } = useBalance({
-    address: address,
-  });
+  // const testnet = "https://mumbai.polygonscan.com/";
+
+  // const { address } = useAccount();
+  // const walletAddress = address;
+  // const web3 = new Web3(new Web3.providers.HttpProvider(testnet));
+  // var balance = web3.eth.getBalance(walletAddress);
+
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const openDialog = () => {
@@ -23,15 +25,11 @@ function ContractPage() {
       <div className="container flex justify-evenly mx-auto mt-10">
         <div className="flex gap-2">
           <h1 className="text-white">Account Balance: </h1>
-          <p className="text-white">
-            {data.formatted} {data.symbol}
-          </p>
+          <p className="text-white"></p>
         </div>
         <div className="flex gap-2">
           <h1 className="text-white">Total Allowance Sanctioned: </h1>
-          <p className="text-white">
-            {data.formatted} {data.symbol}
-          </p>
+          <p className="text-white"></p>
         </div>
         <div className="flex gap-2">
           <h1 className="text-white">Total Benefactors: </h1>
