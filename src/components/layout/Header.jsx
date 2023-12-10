@@ -10,9 +10,11 @@ const Header = () => {
         <img src={logo} alt="Logo" className="w-auro h-5" />
       </div>
 
-      <div>
-        <a href="/transaction">Make Transaction</a>
-        <ConnectButton />
+      <div className="flex gap-4">
+        <a href="/transaction" className="text-white mt-2">
+          Make Transaction
+        </a>
+        <ConnectButton showBalance={false} />
       </div>
     </header>
   );
