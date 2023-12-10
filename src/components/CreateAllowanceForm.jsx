@@ -322,7 +322,27 @@ function CreateAllowanceForm({ handleClose }) {
             marginRight: "5%",
             maxHeight: "500px",
           }}
-        ></div>
+        >
+          <ol className=" text-white">
+            <li>
+              <b>Low Allowance Level: </b>Controlled and modest fund allocation
+              for essential spending needs, providing a foundational budgeting
+              framework.
+            </li>
+            <br />
+            <li>
+              <b>Medium Allowance Level: </b>Balanced and versatile fund
+              allocation catering to varied spending requirements, striking a
+              middle ground between restraint and flexibility.
+            </li>
+            <br />
+            <li>
+              <b>High Allowance Level: </b>Generous fund allocation for users
+              with higher spending needs, accommodating a broad spectrum of
+              expenses and fostering financial autonomy.
+            </li>
+          </ol>
+        </div>
         <div style={{ width: "60%", overflowY: "auto" }}>
           <form>
             <CustomInput
@@ -390,7 +410,7 @@ function CreateAllowanceForm({ handleClose }) {
         </div>
       </div>
 
-      <div>
+      <div className=" flex justify-end">
         <Button
           onClick={handleClose}
           variant="contained"
